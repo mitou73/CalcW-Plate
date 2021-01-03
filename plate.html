@@ -1,1 +1,50 @@
-
+<style>
+.diet_form {
+    background: #eaf4ff;
+    padding: 10px 30px;
+}
+form dl dt {
+    width: 200px;
+    height: 40px;
+    padding: 10px 0;
+    line-height: 40px;
+    float: left;
+}
+form dl dd {
+    padding: 10px 0;
+    margin: 0;
+}
+.box {
+    box-sizing: border-box;
+    width: 150px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+}
+.calc-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #333;
+}
+.calc-btn:hover {
+    cursor: pointer;
+}
+</style>
+<form class="diet_form">
+    <dl>
+        <dt>厚さ(mm)：</dt>
+        <dd><input type="number" class="box" name="t"></dd>
+        <dt>長さ(mm)：</dt>
+        <dd><input type="number" class="box" name="l"></dd>
+        <dt>幅(mm)：</dt>
+        <dd><input type="number" class="box" name="w"></dd>
+        <p><input type="button" class="calc-btn" onclick="calc(t.value, l.value, w.value);" value="計算"></p>
+        <dt>重量(kg)：</dt>
+        <dd><input id="weight" class="box" type="text" readonly=""></dd>
+    </dl>
+</form>
+<script>
+    function calc(t, l, w) {
+        const weight = document.getElementById('weight').value = Math.round(t * l * w * 7.85 / 1000000 * 100) / 100;
+    }
+</script>
